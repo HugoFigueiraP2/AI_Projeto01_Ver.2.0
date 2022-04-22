@@ -6,19 +6,13 @@ using LibGameAI.DecisionTrees;
 using System;
 
 
+
 public class NPC_AI_One : MonoBehaviour
 {
     // Destiny of the AI Agents depending the actual status
-    [SerializeField] private Transform stage_destiny_1;
-    [SerializeField] private Transform stage_destiny_2;
-    [SerializeField] private Transform bar_destiny_1;
-    [SerializeField] private Transform bar_destiny_2;
-    [SerializeField] private Transform bar_destiny_3;
-    [SerializeField] private Transform bar_destiny_4;
-    [SerializeField] private Transform greenZone_destiny_1;
-    [SerializeField] private Transform greenZone_destiny_2;
-    [SerializeField] private Transform greenZone_destiny_3;
-    [SerializeField] private Transform greenZone_destiny_4;
+    [SerializeField] private Transform stage_destiny;
+    [SerializeField] private Transform bar_destiny;
+    [SerializeField] private Transform greenZone_destiny;
 
     //AI Agent Status
     [SerializeField]
@@ -53,18 +47,17 @@ public class NPC_AI_One : MonoBehaviour
     private int DelayAmount_Minus_stamina = 160; //Delay time to AI Agent loss 1 stamina bar
 
     protected float Timer;
-
-    private int digit;
     
     //private int rnd;
     private void Awake()
     {
         npc = GetComponent<NavMeshAgent>();
-        npc.SetDestination(stage_destiny_1.position);
+        npc.SetDestination(stage_destiny.position);
     }
     // Start is called before the first frame update
     void Start()
     {
+        
        // digit = UnityEngine.Random.Range(0, 101);
 
         //Create the leaf actions
@@ -79,7 +72,7 @@ public class NPC_AI_One : MonoBehaviour
 
         root = new DecisionNode(HungryState,Hungry,third_branch);
 
-        
+       // gameObject.tag = "AI_Agent_1";
 
     }
 
@@ -96,10 +89,10 @@ public class NPC_AI_One : MonoBehaviour
             if (Timer >= DelayAmount)
             {
                 Timer = 0f;
-                food = food + 8;
-                digit = UnityEngine.Random.Range(0, 101);
+                food += 8;
+                
             }
-            //digit = UnityEngine.Random.Range(0, 101);
+            
         }
 
         else
@@ -116,7 +109,7 @@ public class NPC_AI_One : MonoBehaviour
             if (Timer >= DelayAmount)
             {
                 Timer = 0f;
-                stamina = stamina + 8;
+                stamina += 8;
             }
 
         }
@@ -129,12 +122,6 @@ public class NPC_AI_One : MonoBehaviour
                 stamina--;
             }
         }
-
-
-        //digit = UnityEngine.Random.Range(0, 101);
-        UnityEngine.Debug.Log(digit);
-
-
 
     }
 
@@ -149,28 +136,8 @@ public class NPC_AI_One : MonoBehaviour
     private void TiredAction()
     {
         // go to waypoint (GreenZone)
-        //digit = UnityEngine.Random.Range(0, 101);
-        if(digit >= 1 && digit <= 25)
-        {
-            npc.SetDestination(greenZone_destiny_1.position);
-        }
-
-        if (digit >= 25 && digit <= 50)
-        {
-            npc.SetDestination(greenZone_destiny_2.position);
-        }
-
-        if (digit >= 50 && digit <= 75)
-        {
-            npc.SetDestination(greenZone_destiny_3.position);
-        }
-
-        if (digit >= 75 && digit <= 100)
-        {
-            npc.SetDestination(greenZone_destiny_4.position);
-        }
-
-
+        npc.SetDestination(greenZone_destiny.position);
+        
     }
 
 
@@ -186,7 +153,7 @@ public class NPC_AI_One : MonoBehaviour
     private void HungryAction()
     {
         // go to waypoint (Bar)
-        npc.SetDestination(bar_destiny_1.position);
+        npc.SetDestination(bar_destiny.position);
 
     }
 
@@ -196,7 +163,7 @@ public class NPC_AI_One : MonoBehaviour
     {
         
         if (stamina > 2 && food > 2)
-        npc.SetDestination(stage_destiny_1.position);
+        npc.SetDestination(stage_destiny.position);
     }
 
     //Check if AI_Agent is in danger

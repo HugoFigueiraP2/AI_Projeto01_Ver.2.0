@@ -6,6 +6,12 @@ TagManager:
   tags:
   - Explosion
   - Cube
+  - AI_Agent_1
+  - AI_Agent_Hungry
+  - Ai_Agent_Tired
+  - AI_Agent_2
+  - AI_Agent_3
+  - AI_Agent_4
   layers:
   - Default
   - TransparentFX
