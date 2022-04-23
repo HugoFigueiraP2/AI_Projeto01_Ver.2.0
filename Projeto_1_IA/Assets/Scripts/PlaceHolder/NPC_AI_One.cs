@@ -7,6 +7,7 @@ using System;
 
 
 
+
 public class NPC_AI_One : MonoBehaviour
 {
     // Destiny of the AI Agents depending the actual status
@@ -60,13 +61,13 @@ public class NPC_AI_One : MonoBehaviour
     void Start()
     {
         
-       // digit = UnityEngine.Random.Range(0, 101);
+       
 
         //Create the leaf actions
-        IDecisionTreeNode InDanger = new ActionNode(InDangerAction);
-        IDecisionTreeNode Tired = new ActionNode(TiredAction);
-        IDecisionTreeNode Hungry = new ActionNode(HungryAction);
-        IDecisionTreeNode Normal = new ActionNode(NormalAction);
+        IDecisionTreeNode InDanger  = new ActionNode(InDangerAction);
+        IDecisionTreeNode Tired     = new ActionNode(TiredAction);
+        IDecisionTreeNode Hungry    = new ActionNode(HungryAction);
+        IDecisionTreeNode Normal    = new ActionNode(NormalAction);
 
         // Create the root node
         
@@ -74,7 +75,7 @@ public class NPC_AI_One : MonoBehaviour
 
         second_branch = new DecisionNode(HungryState,Hungry,third_branch);
 
-        root = new DecisionNode (DangerState,InDanger, second_branch);
+        root = new DecisionNode (InDangerState,InDanger, second_branch);
 
        // gameObject.tag = "AI_Agent_1";
 
@@ -172,7 +173,7 @@ public class NPC_AI_One : MonoBehaviour
 
     //Check if AI_Agent is in danger
 
-    private bool DangerState()
+    private bool InDangerState()
     {
         if (Input.GetKeyDown(KeyCode.Mouse1)) return true;
         return false;

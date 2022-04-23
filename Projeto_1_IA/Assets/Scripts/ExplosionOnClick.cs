@@ -17,14 +17,17 @@ public class ExplosionOnClick : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Mouse.current.leftButton.wasPressedThisFrame)
+        if(Mouse.current.leftButton.wasPressedThisFrame) 
         {
             Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out hit)) //return true;
             {
-                Instantiate(target, new Vector3(hit.point.x, hit.point.y + target.transform.position.y, hit.point.z), Quaternion.identity);
+                Instantiate(target, new Vector3(hit.point.x, hit.point.y + target.transform.position.y, hit.point.z), Quaternion.identity); 
             }
+
+            
         }
     }
+
 }
