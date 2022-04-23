@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -13,6 +13,8 @@ public class NPC_AI_One : MonoBehaviour
     [SerializeField] private Transform stage_destiny;
     [SerializeField] private Transform bar_destiny;
     [SerializeField] private Transform greenZone_destiny;
+
+    [SerializeField] private Transform exit_destiny;
 
     //AI Agent Status
     [SerializeField]
@@ -36,7 +38,7 @@ public class NPC_AI_One : MonoBehaviour
     //Decision Tree root
     private IDecisionTreeNode root;
 
-    //private IDecisionTreeNode second_branch;
+    private IDecisionTreeNode second_branch;
 
     private IDecisionTreeNode third_branch;
 
@@ -61,16 +63,18 @@ public class NPC_AI_One : MonoBehaviour
        // digit = UnityEngine.Random.Range(0, 101);
 
         //Create the leaf actions
-        //IDecisionTreeNode InDanger = new ActionNode(InDangerAction);
+        IDecisionTreeNode InDanger = new ActionNode(InDangerAction);
         IDecisionTreeNode Tired = new ActionNode(TiredAction);
         IDecisionTreeNode Hungry = new ActionNode(HungryAction);
         IDecisionTreeNode Normal = new ActionNode(NormalAction);
 
         // Create the root node
-        // root = new DecisionNode (Danger,InDanger, Hungry);
+        
         third_branch = new DecisionNode(TiredState, Tired, Normal);
 
-        root = new DecisionNode(HungryState,Hungry,third_branch);
+        second_branch = new DecisionNode(HungryState,Hungry,third_branch);
+
+        root = new DecisionNode (DangerState,InDanger, second_branch);
 
        // gameObject.tag = "AI_Agent_1";
 
@@ -168,24 +172,20 @@ public class NPC_AI_One : MonoBehaviour
 
     //Check if AI_Agent is in danger
 
+    private bool DangerState()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse1)) return true;
+        return false;
+        
+        
+    }
+
    private void InDangerAction()
    {
-        //if agent in danger, go to exit (Stage)
-       // MoveTowardsTarget(CurrentWaypoint);
+        //go to waypoint
+        npc.SetDestination(exit_destiny.position);
    }
-   // private void OnTriggerEnter(Collider col)
-   // {
-   //     if (col.name == "Destiny")
-   //     {
-   //         rnd = Random.Range(0, 5);
-   //         Invoke("Destination", rnd);
-    //    }
-    //}
-
-   // private void Destination()
-    //{
-    //    npc.SetDestination(normal_destiny.position);
-    //}
+   
 }
 
 
