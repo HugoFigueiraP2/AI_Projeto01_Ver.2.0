@@ -14,6 +14,6 @@ public class DestroyAgents : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(GameObject.FindGameObjectWithTag("Cube"));
+        Destroy(GameObject.FindGameObjectWithTag("AI_Agent"));
     }
 }
