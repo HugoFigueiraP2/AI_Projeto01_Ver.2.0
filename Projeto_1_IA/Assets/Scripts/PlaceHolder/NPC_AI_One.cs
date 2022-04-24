@@ -50,6 +50,10 @@ public class NPC_AI_One : MonoBehaviour
     private int DelayAmount_Minus_stamina = 160; //Delay time to AI Agent loss 1 stamina bar
 
     protected float Timer;
+
+    public GameObject Explosion;
+
+    
     
     //private int rnd;
     private void Awake()
@@ -130,11 +134,12 @@ public class NPC_AI_One : MonoBehaviour
 
     }
 
+
     //Check if AI_Agent is in danger
      private bool InDangerState()
     {
-        //if (Explosion == true) return true;
-        return true;
+        if (Explosion == GameObject.FindGameObjectWithTag("Explosion")) return true; //if explosion <= 3 radius
+        return false;
         
         
     }
