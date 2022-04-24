@@ -16,6 +16,10 @@ E é com este trabalho, que o nosso grupo pertende descobrir como é que os espe
 ## Metodologia
 A simulação foi feita em 3D. Os agentes têm movimento cinemático, ou seja, avançam com uma velocidade constante e até ao objectivo. Usamos Decision Trees para que os agentes determinassem o seu objectivo e ações. Consuante os valores da food, stamina e speed (nome que usamos na nossas variaveis), o destino dos nossos agentes mudaria. Inicialmente, a maioria, encaminharia-se para os palcos, porém, alguns agentes já poderia começar com a food e stamina baixa e, então, encaminhariam-se para as zonas restauração e zonas verdes. Contudo, os agentes também vão perder food e stamina à medida que o tempo vai passando. Quando isso acontece, esses agentes irão para as zonas verdes ou restauração para recuperarem o valor da variavel que perderam. Após recuperarem esses valores, irão direcionar novamente para um dos palcos.
 
+![Diagram UML dos agentes](https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2fb39435-99ff-49ad-9246-42032eeea416/df47lvn-f5e4bbbf-6828-4e99-8910-ef7d87eb56eb.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzJmYjM5NDM1LTk5ZmYtNDlhZC05MjQ2LTQyMDMyZWVlYTQxNlwvZGY0N2x2bi1mNWU0YmJiZi02ODI4LTRlOTktODkxMC1lZjdkODdlYjU2ZWIucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.4VzC6-jiC2Kt918-gPCTPmuLFovIXzDI6QKZnrrENzA)
+
+Diagrama UML dos agentes que foi criado
+
 ## Resultados e discussão
 Observamos que os agentes tendem quase todos a ir para o palco maior enquanto, uma minoria vai para as zonas de restauração ou, para as zonas verdes, ou então, desloca-se para o palco mais pequeno. Alguns agentes por vezes, ficam parados no meio do caminho, enquanto, outros cortam caminho para ir para o seu destino. Se houver vários agentes no mesmo sitio, eles tenderam a empurrar-se um pouco de forma a permanecer no mesmo sitio, ou seja, não querem sair do destino onde estão.
 
