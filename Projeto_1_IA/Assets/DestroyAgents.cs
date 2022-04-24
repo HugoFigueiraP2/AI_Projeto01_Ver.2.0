@@ -6,14 +6,16 @@ public class DestroyAgents : MonoBehaviour
 {
     [SerializeField] private GameObject go;
     private GameObject target;
+    //public bool Explosion;
 
     private void Start()
     {
         target = Instantiate(go);
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         Destroy(GameObject.FindGameObjectWithTag("AI_Agent"));
+        //Explosion = true;
     }
 }

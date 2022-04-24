@@ -130,6 +130,20 @@ public class NPC_AI_One : MonoBehaviour
 
     }
 
+    //Check if AI_Agent is in danger
+     private bool InDangerState()
+    {
+        if (Explosion == true) return true;
+        return false;
+        
+        
+    }
+
+   private void InDangerAction()
+   {
+        //go to waypoint
+        npc.SetDestination(exit_destiny.position);
+   }
 
     //Check if AI_Agent is Tired
     private bool TiredState()
@@ -171,21 +185,7 @@ public class NPC_AI_One : MonoBehaviour
         npc.SetDestination(stage_destiny.position);
     }
 
-    //Check if AI_Agent is in danger
-
-    private bool InDangerState()
-    {
-        if (Input.GetKeyDown(KeyCode.Mouse1)) return true;
-        return false;
-        
-        
-    }
-
-   private void InDangerAction()
-   {
-        //go to waypoint
-        npc.SetDestination(exit_destiny.position);
-   }
+    
    
 }
 
