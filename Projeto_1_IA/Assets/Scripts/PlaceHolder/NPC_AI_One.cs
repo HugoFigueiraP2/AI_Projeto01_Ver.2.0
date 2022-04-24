@@ -133,8 +133,8 @@ public class NPC_AI_One : MonoBehaviour
     //Check if AI_Agent is in danger
      private bool InDangerState()
     {
-        if (Explosion == true) return true;
-        return false;
+        //if (Explosion == true) return true;
+        return true;
         
         
     }
