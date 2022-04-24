@@ -12,21 +12,19 @@ public class NPC_AI_One : MonoBehaviour
 {
     // Destiny of the AI Agents depending the actual status
     [SerializeField] private Transform stage_destiny;
+
     [SerializeField] private Transform bar_destiny;
+
     [SerializeField] private Transform greenZone_destiny;
 
     [SerializeField] private Transform exit_destiny;
 
-    //AI Agent Status
-    [SerializeField]
-    [Range(0, 10)]
-    private int health = 10;
-     
-
+    //AI Agent Status (Food)
     [SerializeField]
     [Range(0, 10)]
     private int food = 10;
 
+    //AI Agent Status (stamina)
     [SerializeField]
     [Range(0, 10)]
     private int stamina = 10;
@@ -91,6 +89,7 @@ public class NPC_AI_One : MonoBehaviour
         ActionNode actionNode = root.MakeDecision() as ActionNode;
         actionNode.Execute();
 
+        // Time to recover food
         Timer += Time.deltaTime;
 
         if (food <= 2)
@@ -104,6 +103,7 @@ public class NPC_AI_One : MonoBehaviour
             
         }
 
+        //Time to lose food
         else
         {
             if (Timer >= DelayAmount_Minus_food)
@@ -113,6 +113,7 @@ public class NPC_AI_One : MonoBehaviour
             }
         }
 
+        //Time to gain stamina
         if (stamina <= 2)
         {
             if (Timer >= DelayAmount)
@@ -123,6 +124,7 @@ public class NPC_AI_One : MonoBehaviour
 
         }
 
+        //Time to lose stamina
         else
         {
             if (Timer >= DelayAmount_Minus_stamina)
